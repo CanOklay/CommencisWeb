@@ -10,9 +10,4 @@
             <class name="com.commencis.test.LatestNewsTest"/>
         </classes>
     </test>
-    <test name="Latest News Check">
-        <classes>
-            <class name="com.commencis.test.LatestNewsTest"/>
-        </classes>
-    </test>
 </suite>

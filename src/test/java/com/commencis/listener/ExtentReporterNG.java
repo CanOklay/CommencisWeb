@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class ExtentReporterNG {
+public class ExtentReporterNG implements IReporter {
 
     private ExtentReports extent;
     ExtentHtmlReporter htmlReporter;

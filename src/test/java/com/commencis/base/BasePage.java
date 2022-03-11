@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage extends BaseTest {
@@ -25,6 +26,12 @@ public abstract class BasePage extends BaseTest {
         webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by));
         return driver.findElement(by);
+    }
+
+    public List<WebElement> findElements(By by) {
+        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by));
+        return driver.findElements(by);
     }
 
     public void sendKeys(By by, String text) {
@@ -74,8 +81,8 @@ public abstract class BasePage extends BaseTest {
         Assert.assertEquals(actualText, expectedText);
     }
 
-    public void assertTrue(boolean condition, String message) {
-        Assert.assertTrue(condition, message);
+    public void assertTrue(boolean condition) {
+        Assert.assertTrue(condition);
     }
 
     public void assertFalse(boolean condition, String message) {

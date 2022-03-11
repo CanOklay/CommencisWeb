@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suiste SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Commencis">
+    <listeners>
+        <listener class-name="com.commencis.listener.Listener"/>
+        <listener class-name="com.commencis.listener.ExtentReporterNG"/>
+    </listeners>
+    <test name="Latest News Check">
+        <classes>
+            <class name="com.commencis.test.LatestNewsTest"/>
+        </classes>
+    </test>
+    <test name="Latest News Check">
+        <classes>
+            <class name="com.commencis.test.LatestNewsTest"/>
+        </classes>
+    </test>
+</suite>

@@ -34,11 +34,6 @@ public class BaseTest extends DriverFactory {
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(configFileReader.getWebDriverWait()));
     }
 
-    @Test
-    public void go() {
-
-    }
-
     @AfterMethod
     public void after() {
         if (driver != null) {

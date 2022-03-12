@@ -7,6 +7,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -50,17 +51,6 @@ public abstract class BasePage extends BaseTest {
         return findElement(by).getText();
     }
 
-    public void clear(By by) {
-        findElement(by).clear();
-    }
-
-    public void clearBackSpace(By by) {
-        WebElement element = findElement(by);
-        while (!element.getAttribute("value").equals("")) {
-            element.sendKeys(Keys.BACK_SPACE);
-        }
-    }
-
     public void wait(int seconds) throws InterruptedException {
         TimeUnit.SECONDS.sleep(seconds);
     }
@@ -77,20 +67,29 @@ public abstract class BasePage extends BaseTest {
         }
     }
 
+    public void scroll(By by) {
+        TouchActions touchActions = new TouchActions(driver);
+        WebElement element = findElement(by);
+        Point point = element.getLocation();
+        int x = point.getX();
+        int y = point.getY();
+        touchActions.scroll(x, y);
+        touchActions.perform();
+    }
+
+    public void jsExecuterScroll() {
+        // Create instance of Javascript executor
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        //Identify the WebElement which will appear after scrolling down
+        js.executeScript("window.scrollBy(0,500)", "");
+    }
+
     public void assertEquals(String actualText, String expectedText) {
         Assert.assertEquals(actualText, expectedText);
     }
 
     public void assertTrue(boolean condition) {
         Assert.assertTrue(condition);
-    }
-
-    public void assertFalse(boolean condition, String message) {
-        Assert.assertFalse(condition, message);
-    }
-
-    public void assertEqualsInteger(String first, int second) {
-        Assert.assertEquals(first, second);
     }
 
     public void assertFail() {

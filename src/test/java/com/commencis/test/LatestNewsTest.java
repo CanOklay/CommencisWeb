@@ -7,7 +7,13 @@ public class LatestNewsTest extends LatestNews {
 
     @Test
     public void verify_each_news_has_author_and_image() {
-        checkEachNewsHasAuthor();
-        checkEachNewsHasImage();
+        verifyEachNewsHasAuthor();
+        verifyEachNewsHasImage();
+    }
+
+    @Test
+    public void click_one_of_the_news_verify_title_and_news_content() {
+        clickOneOfNewsAndVerifyBrowserTitleIsTheSameWithNewsTitle();
+        verifyLinksWithinNewsContent();
     }
 }

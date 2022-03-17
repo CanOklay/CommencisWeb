@@ -1,6 +1,5 @@
 .DS_Store
 test-output/
-report/
 .idea
 .project
 .settings
@@ -9,7 +8,6 @@ report/
 *.iml
 build/
 bin/
-CICD/
 examples/zip-release/*.jar
 
 

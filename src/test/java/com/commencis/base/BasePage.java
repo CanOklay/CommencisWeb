@@ -6,8 +6,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -17,7 +15,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public abstract class BasePage extends BaseTest {
 
@@ -35,24 +32,8 @@ public abstract class BasePage extends BaseTest {
         return driver.findElements(by);
     }
 
-    public void sendKeys(By by, String text) {
-        findElement(by).sendKeys(text);
-    }
-
-    public void clickElement(By by) {
-        webDriverWait.until(ExpectedConditions.elementToBeClickable(by));
-        Actions action = new Actions(driver);
-        action.moveToElement(findElement(by));
-        action.click();
-        action.build().perform();
-    }
-
     public String getText(By by) {
         return findElement(by).getText();
-    }
-
-    public void wait(int seconds) throws InterruptedException {
-        TimeUnit.SECONDS.sleep(seconds);
     }
 
     public void screenShot(String text) {
@@ -65,16 +46,6 @@ public abstract class BasePage extends BaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void scroll(By by) {
-        TouchActions touchActions = new TouchActions(driver);
-        WebElement element = findElement(by);
-        Point point = element.getLocation();
-        int x = point.getX();
-        int y = point.getY();
-        touchActions.scroll(x, y);
-        touchActions.perform();
     }
 
     public void jsExecuterScroll() {
